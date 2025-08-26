@@ -1,12 +1,17 @@
 'use client'
 
-import { decrement, increment } from '@/redux/features/counterSlice';
-import { useAppDistpatch, useAppSelector } from '../redux/hooks';
+import { increment, decrement, reset } from '@/redux/features/counterSlice';
+import { changeUsername } from '@/redux/features/userSlice';
+import { UseAppDistpatch, UseAppSelector } from "@/redux/services/hooks";
+
 
 export default function Home() {
 
-  const count = useAppSelector( state => state.counterReducer.counter );
-  const distpatch = useAppDistpatch();
+  const distpatch = UseAppDistpatch();
+
+  const count = UseAppSelector( (state) => state.counterReducer.value )
+
+  const userName = UseAppSelector( (state) => state.userReducer.userName )
   return (
     <>
 
@@ -30,6 +35,23 @@ export default function Home() {
         }}>
         decrement
       </button>
+
+
+      <button className="border rounded px-2 py-0.5"
+        onClick={() => {
+          distpatch(reset())
+        }}>
+        reset
+      </button>
+
+      <label htmlFor="">user name : </label>
+
+      <input type="text"  
+      className='border' 
+      onChange={ (e) => distpatch(changeUsername(e.target.value))}/>
+
+      <span>{ userName }</span>
+
 
     </div>
     </>
