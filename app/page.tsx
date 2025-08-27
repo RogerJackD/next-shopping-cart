@@ -2,9 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { increment, decrement, reset } from "@/redux/features/counterSlice";
-import { changeUsername } from "@/redux/features/userSlice";
+
+import { Check, X, ShoppingCart  } from "lucide-react";
+
 import { UseAppDistpatch, UseAppSelector } from "@/redux/services/hooks";
+import { changeUsername } from "@/redux/features/userSlice";
+import { increment, decrement, reset } from "@/redux/features/counterSlice";
 
 export default function Home() {
   const dispatch = UseAppDistpatch();
@@ -19,11 +22,10 @@ export default function Home() {
 
         <label htmlFor="">user name : </label>
 
-        <Input 
+        <Input
           placeholder="enter username"
-          onChange={(e) => dispatch(changeUsername(e.target.value))}/>
-
-        
+          onChange={(e) => dispatch(changeUsername(e.target.value))}
+        />
 
         <span>{userName}</span>
 
@@ -39,7 +41,7 @@ export default function Home() {
         <Button
           className="flex items-center gap-2 my-2 bg-blue-700"
           variant={"default"}
-          size={'default'}
+          size={"default"}
           onClick={() => {
             dispatch(decrement());
           }}
@@ -56,6 +58,13 @@ export default function Home() {
         >
           reset
         </Button>
+
+        <div className="flex gap-4">
+          <Check className="w-6 h-6 text-green-500" />
+          <X className="w-6 h-6 text-red-500" />
+        </div>
+
+        <ShoppingCart/>
       </div>
     </>
   );
