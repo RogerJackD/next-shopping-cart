@@ -34,9 +34,14 @@ export default function Home() {
         )}
         
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-5 gap-6">
         <ProductCard/>
         <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+
+
       </div>
     </>
   );
