@@ -9,7 +9,6 @@ async function handleApiResponse<T>(response : Response): Promise<T> {
     }
     const dataaa = await response.json();
 
-    console.log({dataaa})
     return dataaa;
 }
 
