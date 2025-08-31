@@ -5,25 +5,33 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../atoms/c
 import Image from 'next/image'
 import { Button } from '../atoms/button'
 import { ShoppingCart } from 'lucide-react'
+import { Product } from '../../../features/products/interfaces/product';
 
-export default function ProductCard() {
+interface ProductCardProps {
+  product: Product
+}
+
+
+export default function ProductCard({product} : ProductCardProps) {
   return (
       <Card className='h-full flex flex-col'>
         <CardHeader>
+          <div className="aspect-square">
             <Image
-              src={'https://m.media-amazon.com/images/I/71Tb0MNtXvL._AC_SY200_.jpg'}
+              src={product.main_image}
               alt={'imageproduct'}
               width={200}
               height={50}
               priority
-              className='object-cover w-full h-full'
+              className='object-contain w-full h-full hover:scale-105  duration-600'
             />
+          </div>
         </CardHeader>
 
         <CardContent className='flex-1 p-4'>
-          <CardTitle className='text-lg mb-2'>Monitor Gaming 24 pulgadas</CardTitle>
+          <CardTitle className='text-lg mb-2'>{ product.title}</CardTitle>
           <p className='text-sm text-gray-600 mb-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia fugit distinctio labore optio. Odit magnam doloribus obcaecati? Aut tenetur hic aliquam dolore, labore, est numquam eaque aperiam accusamus, quos recusandae?</p>
-          <p className='text-2xl font-bold'>$ 500.00</p>
+          <p className='text-2xl font-bold'>{ product.price }</p>
         </CardContent>
 
         <CardFooter>
