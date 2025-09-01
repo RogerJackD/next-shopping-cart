@@ -1,15 +1,21 @@
 "use client";
 
-import ProductCatalog from '../shared/components/Product-catalog';
+import ProductCatalog from "@/features/products/components/product-catalog";
+import Navbar from '../shared/components/navbar';
+
 
 
 export default function Home() {
   
 
   return (
-    <>
-      <h1>hello</h1>
-        <ProductCatalog/>
-    </>
+    <div className="min-h-screen bg-gray-50">
+      <Navbar/>
+      <ProductCatalog/>
+      <ProductCatalog/>
+
+      <ProductCatalog/>
+
+    </div>
   );
 }

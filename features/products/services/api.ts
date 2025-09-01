@@ -7,9 +7,9 @@ async function handleApiResponse<T>(response : Response): Promise<T> {
     if( !response.ok ){
         throw new Error(`API Error: ${response.status} - ${response.statusText}`);
     }
-    const dataaa = await response.json();
+    const data = await response.json();
 
-    return dataaa;
+    return data;
 }
 
 
