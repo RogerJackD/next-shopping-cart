@@ -1,10 +1,24 @@
 export interface Product {
+  id: number;
+  title: string;
+  price: number;
+  description: string | null;
+  mainImage: string;
+  galleryImages: string[];
+}
+
+export interface ProductApiResponse {
     id: number;
-    title: number;
+    title: string;
     price: number;
     description: string | null;
     main_image: string;
     gallery_images: string[];
 }
 
-export type ProductsResponse = Product[]
+
+
+
+export type ProductsApiResponse = ProductApiResponse[];
+
+

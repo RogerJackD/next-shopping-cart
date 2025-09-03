@@ -1,9 +1,9 @@
-import { ProductsResponse } from "../interfaces/product";
+import { Product, ProductsApiResponse } from '@/features/products/interfaces/product';
+import { mapProduct } from './productAdapter';
 
 const API_BASE_URL = 'http://localhost:3030/api';
 
 async function handleApiResponse<T>(response : Response): Promise<T> {
-    console.log({response})
     if( !response.ok ){
         throw new Error(`API Error: ${response.status} - ${response.statusText}`);
     }
@@ -13,13 +13,13 @@ async function handleApiResponse<T>(response : Response): Promise<T> {
 }
 
 
-export async function getProducts(): Promise<ProductsResponse> {
+export async function getProducts(): Promise<Product[]> {
     const response = await fetch(`${API_BASE_URL}/products`, {
         method: 'GET',
-        headers: {
-            "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
     });
-    
-    return handleApiResponse<ProductsResponse>(response);
+
+    const productsResponse = await handleApiResponse<ProductsApiResponse>(response);
+
+    return productsResponse.map(mapProduct);
 }

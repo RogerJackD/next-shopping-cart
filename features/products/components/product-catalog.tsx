@@ -1,8 +1,8 @@
 
 import { Product } from '@/features/products/interfaces/product';
 import { getProducts } from '@/features/products/services/api';
+import ProductCard from '@/shared/components/organisms/product-card';
 import React, { useEffect, useState } from 'react'
-import ProductCard from '../../../shared/components/organisms/product-card';
 
 export default function ProductCatalog() {
 
