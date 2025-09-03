@@ -1,14 +1,14 @@
 
 
 import React from 'react'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../atoms/card'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../../../../shared/components/atoms/card'
 import Image from 'next/image'
-import { Button } from '../atoms/button'
+import { Button } from '../../../../shared/components/atoms/button'
 import { ShoppingCart } from 'lucide-react'
-import { Product } from '../../../features/products/interfaces/product';
+import { Product } from '../../interfaces/product';
 import { useAppDispatch, useAppSelector } from '@/shared/store/hooks'
 import { addItemToCart } from '@/shared/store/features/cart-slice'
-import { adaptProductToCart } from '@/features/cart/services/cartProductAdapter'
+import { adaptProductToCart } from '@/features/cart/adapters/cartProductAdapter'
 
 interface ProductCardProps {
   product: Product

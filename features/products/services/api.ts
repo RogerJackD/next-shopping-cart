@@ -1,5 +1,5 @@
 import { Product, ProductsApiResponse } from '@/features/products/interfaces/product';
-import { mapProduct } from './productAdapter';
+import { mapProduct } from '../adapters/productAdapter';
 
 const API_BASE_URL = 'http://localhost:3030/api';
 
