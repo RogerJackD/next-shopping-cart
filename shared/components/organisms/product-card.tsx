@@ -6,6 +6,9 @@ import Image from 'next/image'
 import { Button } from '../atoms/button'
 import { ShoppingCart } from 'lucide-react'
 import { Product } from '../../../features/products/interfaces/product';
+import { useAppDispatch, useAppSelector } from '@/shared/store/hooks'
+import { addItemToCart } from '@/shared/store/features/cart-slice'
+import { adaptProductToCart } from '@/features/cart/services/cartProductAdapter'
 
 interface ProductCardProps {
   product: Product
@@ -13,12 +16,22 @@ interface ProductCardProps {
 
 
 export default function ProductCard({product} : ProductCardProps) {
+
+  const dispatch = useAppDispatch();
+  const { items } = useAppSelector(state => state.cartReducer);
+  const handleAddToCart = () =>{ 
+    const item = adaptProductToCart(product);
+    dispatch(addItemToCart(item));
+    console.log(items);
+  }
+
+
   return (
       <Card className='h-full flex flex-col'>
         <CardHeader>
           <div className="aspect-square">
             <Image
-              src={product.main_image}
+              src={product.mainImage}
               alt={'imageproduct'}
               width={200}
               height={50}
@@ -35,7 +48,7 @@ export default function ProductCard({product} : ProductCardProps) {
         </CardContent>
 
         <CardFooter>
-          <Button className='w-full bg-violet-950' size={'lg'}>
+          <Button className='w-full bg-violet-950' size={'lg'} onClick={handleAddToCart}>
             <ShoppingCart className='mr-2'/>
             Agregar al carrito
           </Button>
